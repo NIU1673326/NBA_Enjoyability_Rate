@@ -4,19 +4,6 @@ from nba_api.stats.endpoints import ScoreboardV2, BoxScoreTraditionalV2, PlayByP
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 import time
-import requests
-from nba_api.stats.library.parameters import SeasonAll
-from nba_api.stats.library.http import NBAStatsHTTP
-
-# 👇 Custom headers per evitar el bloqueig
-NBAStatsHTTP.headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36',
-    'Accept-Language': 'en-US,en;q=0.9',
-    'Referer': 'https://www.nba.com/',
-    'Origin': 'https://www.nba.com',
-    'Host': 'stats.nba.com',
-    'Connection': 'keep-alive'
-}
 
 
 partits_dir = "nba_json_partits"
@@ -535,16 +522,9 @@ dia_now = datetime.now(ZoneInfo("US/Eastern"))
 dia_et = dia_now - timedelta(days=1)
 dia_str = dia_et.strftime("%m/%d/%Y")
 
-MAX_RETRIES = 3
-for attempt in range(MAX_RETRIES):
-    try:
-        scoreboard = ScoreboardV2(game_date=dia_str)
-        break
-    except requests.exceptions.RequestException as e:
-        print(f"[ERROR NBA API] Intent {attempt + 1} fallit: {e}")
-        time.sleep(10)
-else:
-    raise RuntimeError("No s'ha pogut accedir a l'NBA API després de diversos intents.")
+
+# Demanar partits de la data
+scoreboard = ScoreboardV2(game_date=dia_str)
 games = scoreboard.game_header.get_dict()["data"]
 
 # Obtenir els GAME_IDs
@@ -563,3 +543,21 @@ for game_id in game_ids_dia:
 
 ordenar_base_per_data()
 generar_json_ultims_partits(db_dir, output_path)
+
+from flask import Flask
+from threading import Thread
+
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "Enjoyability script is running!"
+
+def run():
+    app.run(host='0.0.0.0', port=8080)
+
+# Llançar Flask en segon pla
+t = Thread(target=run)
+t.start()
+
+import push_to_github
