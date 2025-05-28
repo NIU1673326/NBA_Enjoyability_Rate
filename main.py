@@ -4,6 +4,19 @@ from nba_api.stats.endpoints import ScoreboardV2, BoxScoreTraditionalV2, PlayByP
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 import time
+from nba_api.library.http import NBAStatsHTTP
+
+NBAStatsHTTP._nba_headers = {
+    'Host': 'stats.nba.com',
+    'Connection': 'keep-alive',
+    'Accept': 'application/json, text/plain, */*',
+    'x-nba-stats-token': 'true',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+                  '(KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36',
+    'x-nba-stats-origin': 'stats',
+    'Origin': 'https://www.nba.com',
+    'Referer': 'https://www.nba.com/',
+}
 
 partits_dir = "nba_json_partits"
 jugadors_dir = "nba_json_jugadors"
