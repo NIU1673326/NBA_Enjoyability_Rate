@@ -520,7 +520,7 @@ def completa_game_date_si_cal(game_id, partits_dir, game_date_obj):
 dia_now = datetime.now(ZoneInfo("US/Eastern"))
 
 # Data d’ahir en Eastern Time
-dia_et = dia_now - timedelta(days=4)
+dia_et = dia_now - timedelta(days=3)
 dia_str = dia_et.strftime("%m/%d/%Y")
 
 
