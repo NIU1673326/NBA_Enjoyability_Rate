@@ -67,7 +67,7 @@ def carregar_game_date(game_id):
         print(f"[ERROR] No s'ha pogut obtenir la data per {game_id}: {e}")
     return None
 
-def generar_json_ultims_partits(db_path, output_json_path, n=5):
+def generar_json_ultims_partits(db_path, output_json_path, n=4):
     try:
         with open(db_path, "r", encoding="utf-8") as f:
             linies = [l.strip() for l in f if "|" in l]
