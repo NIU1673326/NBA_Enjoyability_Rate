@@ -4,19 +4,7 @@ from nba_api.stats.endpoints import ScoreboardV2, BoxScoreTraditionalV2, PlayByP
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 import time
-from nba_api.library.http import NBAStatsHTTP
 
-NBAStatsHTTP._nba_headers = {
-    'Host': 'stats.nba.com',
-    'Connection': 'keep-alive',
-    'Accept': 'application/json, text/plain, */*',
-    'x-nba-stats-token': 'true',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
-                  '(KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36',
-    'x-nba-stats-origin': 'stats',
-    'Origin': 'https://www.nba.com',
-    'Referer': 'https://www.nba.com/',
-}
 
 partits_dir = "nba_json_partits"
 jugadors_dir = "nba_json_jugadors"
@@ -534,8 +522,16 @@ dia_now = datetime.now(ZoneInfo("US/Eastern"))
 dia_et = dia_now - timedelta(days=1)
 dia_str = dia_et.strftime("%m/%d/%Y")
 
-# Demanar partits de la data
-scoreboard = ScoreboardV2(game_date=dia_str)
+MAX_RETRIES = 3
+for attempt in range(MAX_RETRIES):
+    try:
+        scoreboard = ScoreboardV2(game_date=dia_str)
+        break
+    except requests.exceptions.RequestException as e:
+        print(f"[ERROR NBA API] Intent {attempt + 1} fallit: {e}")
+        time.sleep(10)
+else:
+    raise RuntimeError("No s'ha pogut accedir a l'NBA API després de diversos intents.")
 games = scoreboard.game_header.get_dict()["data"]
 
 # Obtenir els GAME_IDs
