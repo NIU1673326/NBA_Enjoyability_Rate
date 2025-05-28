@@ -17,7 +17,7 @@
   </main>
 
   <script>
-  fetch("partits_del_dia.json")
+  fetch('partits_del_dia.json?v=' + new Date().getTime())
     .then(res => res.json())
     .then(data => {
       const container = document.getElementById("partits");
