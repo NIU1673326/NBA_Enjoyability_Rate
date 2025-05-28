@@ -4,6 +4,7 @@ from nba_api.stats.endpoints import ScoreboardV2, BoxScoreTraditionalV2, PlayByP
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 import time
+import requests
 
 
 partits_dir = "nba_json_partits"
