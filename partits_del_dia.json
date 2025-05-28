@@ -1,37 +1,37 @@
 [
   {
-    "game_id": "0042400312",
-    "nota": 2.8,
-    "data": "22/05/2025",
-    "equip_local": "Thunder",
-    "equip_visitant": "Timberwolves"
-  },
-  {
     "game_id": "0042400302",
     "nota": 7.3,
-    "data": "23/05/2025",
-    "equip_local": "Knicks",
-    "equip_visitant": "Pacers"
+    "data": "",
+    "equip_local": "",
+    "equip_visitant": ""
   },
   {
     "game_id": "0042400313",
     "nota": 0.2,
-    "data": "24/05/2025",
-    "equip_local": "Timberwolves",
-    "equip_visitant": "Thunder"
+    "data": "",
+    "equip_local": "",
+    "equip_visitant": ""
   },
   {
     "game_id": "0042400303",
     "nota": 7.4,
-    "data": "25/05/2025",
-    "equip_local": "Pacers",
-    "equip_visitant": "Knicks"
+    "data": "",
+    "equip_local": "",
+    "equip_visitant": ""
   },
   {
     "game_id": "0042400314",
     "nota": 8.7,
-    "data": "26/05/2025",
-    "equip_local": "Timberwolves",
-    "equip_visitant": "Thunder"
+    "data": "",
+    "equip_local": "",
+    "equip_visitant": ""
+  },
+  {
+    "game_id": "0042400304",
+    "nota": 7.5,
+    "data": "27/05/2025",
+    "equip_local": "Pacers",
+    "equip_visitant": "Knicks"
   }
 ]

@@ -4,7 +4,8 @@ from nba_api.stats.endpoints import ScoreboardV2, BoxScoreTraditionalV2, PlayByP
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 import time
-
+from flask import Flask
+from threading import Thread
 
 partits_dir = "nba_json_partits"
 jugadors_dir = "nba_json_jugadors"
