@@ -1,9 +1,5 @@
-run = "python3 server.py"
-
+run = "python main.py"
 modules = ["python-3.11"]
 
-[nix]
-
-[[ports]]
-localPort = 8080
-externalPort = 80
+[interpreter]
+mode = "python3"
