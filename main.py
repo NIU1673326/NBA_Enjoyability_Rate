@@ -4,8 +4,6 @@ from nba_api.stats.endpoints import ScoreboardV2, BoxScoreTraditionalV2, PlayByP
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 import time
-from flask import Flask
-from threading import Thread
 
 partits_dir = "nba_json_partits"
 jugadors_dir = "nba_json_jugadors"
@@ -544,21 +542,5 @@ for game_id in game_ids_dia:
 
 ordenar_base_per_data()
 generar_json_ultims_partits(db_dir, output_path)
-
-from flask import Flask
-from threading import Thread
-
-app = Flask('')
-
-@app.route('/')
-def home():
-    return "Enjoyability script is running!"
-
-def run():
-    app.run(host='0.0.0.0', port=8080)
-
-# Llançar Flask en segon pla
-t = Thread(target=run)
-t.start()
 
 import push_to_github
