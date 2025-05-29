@@ -3,3 +3,7 @@ modules = ["python-3.11"]
 
 [interpreter]
 mode = "python3"
+
+[[ports]]
+localPort = 8080
+externalPort = 80
