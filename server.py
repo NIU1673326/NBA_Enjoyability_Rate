@@ -15,7 +15,7 @@ def run():
 def executar_script():
     while True:
         subprocess.run(["python3", "main.py"])
-        time.sleep(28800)  # cada 8 hores
+        time.sleep(10800)  # cada 8 hores
 
 t1 = Thread(target=run)
 t2 = Thread(target=executar_script)
