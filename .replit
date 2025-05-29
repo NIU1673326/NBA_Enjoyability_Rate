@@ -1,8 +1,8 @@
-run = "python server.py & python main.py"
-modules = ["python-3.11"]
+run = "python3 server.py"
+language = "python3"
 
-[interpreter]
-mode = "python3"
+[nix]
+channel = "stable"
 
 [[ports]]
 localPort = 8080
