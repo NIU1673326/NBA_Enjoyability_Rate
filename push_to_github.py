@@ -19,6 +19,8 @@ if not os.path.exists(".git"):
 subprocess.run(["git", "config", "--global", "user.email", "replit@auto.com"])
 subprocess.run(["git", "config", "--global", "user.name", "Replit Auto"])
 
+subprocess.run(["git", "pull", "--rebase", "origin", BRANCH])
+
 # Fes commit i push
 subprocess.run(["git", "add", "."])
 subprocess.run(["git", "commit", "-m", "Actualització automàtica", "--allow-empty"])
