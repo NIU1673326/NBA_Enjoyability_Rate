@@ -1,12 +1,5 @@
 [
   {
-    "game_id": "0042400303",
-    "nota": 7.4,
-    "data": "25/05/2025",
-    "equip_local": "Pacers",
-    "equip_visitant": "Knicks"
-  },
-  {
     "game_id": "0042400314",
     "nota": 8.7,
     "data": "26/05/2025",
@@ -26,5 +19,12 @@
     "data": "28/05/2025",
     "equip_local": "Thunder",
     "equip_visitant": "Timberwolves"
+  },
+  {
+    "game_id": "0042400305",
+    "nota": 1.2,
+    "data": "29/05/2025",
+    "equip_local": "Knicks",
+    "equip_visitant": "Pacers"
   }
 ]

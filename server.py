@@ -1,11 +1,15 @@
-# server.py
 from flask import Flask
+import subprocess
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "✅ El servidor està actiu!"
+    return "UptimeRobot is keeping me awake!"
 
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8080)
+@app.route('/run-main')
+def run_main():
+    subprocess.Popen(["python3", "main.py"])
+    return "main.py executat correctament"
+
+app.run(host='0.0.0.0', port=8080)
